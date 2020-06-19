@@ -14,7 +14,7 @@ const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
 const cors = require('cors');
-
+const bodyParser = require('body-parser');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const userRouter = require('./routes/userRoutes');
@@ -54,6 +54,9 @@ app.prepare()
 
 		app.use(express.json({ limit: '10kb' }));
 		app.use(express.urlencoded({ extended: true, limit: '10kb' }));
+		app.use(bodyParser.urlencoded({ extended: true }));
+		app.use(bodyParser.json());
+
 		app.use(cookieParser());
 
 		app.use(mongoSanitize());
@@ -97,6 +100,7 @@ app.prepare()
 			if (err) throw err;
 			console.log('> Ready on http://localhost:' + port);
 		});
+		app.use(globalErrorHandler);
 	})
 	.catch((ex) => {
 		console.error(ex.stack);

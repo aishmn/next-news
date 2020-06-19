@@ -1,6 +1,6 @@
 import { Row, Col, Form, Button } from 'react-bootstrap';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Router from 'next/router';
 
@@ -31,6 +31,7 @@ const index = () => {
 				backgroundRepeat: 'no-repeat'
 			}}
 		>
+			<Alert />
 			<Col bg="dark" xs={{ order: 'last' }}>
 				<Row className="d-flex justify-content-end ">
 					<Col

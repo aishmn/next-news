@@ -22,15 +22,17 @@ const AdminLayout = ({ children }) => {
 			setAuthToken(localStorage.getItem('token'));
 			if (!user) dispatch(loadUser());
 		}
-	}, [loadUser, loading]);
+	}, [loadUser, loading, user]);
 
-	if (user && !loading && is_authenticated === false) {
-		dispatch(setNotification('Please Login to continue'));
-		return Router.replace('/auth/signin');
-	}
+	if (clientSide && !user) dispatch(loadUser());
+
+	if (loading) return <div>Spinner</div>;
+
+	if (clientSide && !loading && user === null && is_authenticated === false) Router.replace('/auth/signin');
+
 	if (user && user.role == 'user') {
 		dispatch(setNotification('You are not authorized to access admin area, reported to the admin'));
-		return Router.replace('/');
+		Router.replace('/');
 	}
 
 	return (
