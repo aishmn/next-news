@@ -1,0 +1,29 @@
+$body-bg: #f7fff7;
+$theme-colors: (
+  "primary": #083d77,
+  "secondary": #2a9d8f,
+  "info": #457b9d,
+  "warning": #e9c46a,
+  "alert": #a8dadc,
+  "danger": #e76f51,
+  "light": #f1faee,
+  "dark": #264653,
+);
+$enable-rounded: false;
+$enable-gradients: true;
+$enable-transitions: true;
+
+.leFadeInRight span {
+  animation-name: leFadeInRight;
+}
+
+@keyframes leFadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+@import "~bootstrap/scss/bootstrap";
