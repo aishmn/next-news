@@ -26,3 +26,4 @@ export const CREATE_TAG = "CREATE_TAG";
 export const UPDATE_TAG = "UPDATE_TAG";
 export const DELETE_TAG = "DELETE_TAG";
 export const GET_NEWS_BY_SLUG = "GET_NEWS_BY_SLUG";
+export const GET_USER_BY_ID = "GET_USER_BY_ID";

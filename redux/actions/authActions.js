@@ -25,7 +25,7 @@ export const signIn = (data, router) => async (dispatch) => {
     const res = await api.post("/users/login", body);
     dispatch({
       type: SIGNIN,
-      payload: res.data,
+      payload: res.data.data.user,
     });
     console.log(res.data);
     setAuthToken(res.data.token);

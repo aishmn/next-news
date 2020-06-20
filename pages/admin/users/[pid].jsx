@@ -2,14 +2,17 @@ import { useRouter } from "next/router";
 import AdminLayout from "../../../components/core/layouts/AdminLayout";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { getAllUsers, updateUser } from "../../../redux/actions/userActions";
+import {
+  getAllUsers,
+  updateUser,
+  getUserById,
+} from "../../../redux/actions/userActions";
 
 const index = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const { pid } = router.query;
-  const users = useSelector((state) => state.user.users);
-  const user = users && users.find((user) => user._id === pid);
+  const user = useSelector((state) => state.user.user);
   const [formData, setFormData] = useState({
     email: "",
     name: "",
@@ -24,7 +27,8 @@ const index = () => {
     dispatch(updateUser(formData, pid));
   };
   useEffect(() => {
-    if (typeof window !== "undefined" && !users) dispatch(getAllUsers());
+    if (typeof window !== "undefined" && !user && pid)
+      dispatch(getUserById(pid));
 
     if (user)
       setFormData({
@@ -33,7 +37,7 @@ const index = () => {
         name: user.name,
         role: user.role,
       });
-  }, [users]);
+  }, [user, getUserById, pid]);
 
   return (
     <AdminLayout>

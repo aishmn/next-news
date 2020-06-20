@@ -22,12 +22,9 @@ const AdminLayout = ({ children }) => {
       setAuthToken(localStorage.getItem("token"));
       if (!user) dispatch(loadUser());
     }
+    if (clientSide && !loading && is_authenticated === false)
+      Router.replace("/auth/signin");
   }, [loadUser, loading, user]);
-
-  if (clientSide && !user) dispatch(loadUser());
-
-  if (clientSide && !loading && !user && is_authenticated === false)
-    Router.replace("/auth/signin");
 
   if (user && user.role == "user") {
     dispatch(

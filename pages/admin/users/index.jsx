@@ -11,7 +11,7 @@ export const index = () => {
 
   useEffect(() => {
     if (typeof window !== "undefined" && !users) dispatch(getAllUsers());
-  }, [users]);
+  }, [users, getAllUsers]);
 
   return (
     <AdminLayout>
@@ -56,7 +56,7 @@ export const index = () => {
                     <button
                       type="button"
                       className="btn btn-danger btn-sm mr-1"
-                      onClick={() =>
+                      onClick={(e) =>
                         confirm(
                           "Are you sure to delete this, this option is not inversible"
                         ) && dispatch(deleteUser(user._id, users))
@@ -68,6 +68,7 @@ export const index = () => {
                     <Link
                       href="/admin/users/update"
                       as={`/admin/users/${user._id}`}
+                      shallow={true}
                     >
                       <button
                         type="button"

@@ -9,8 +9,7 @@ export const index = () => {
   useEffect(() => {
     if (typeof window !== "undefined" && all_news === null)
       dispatch(getAllNews());
-    console.log(all_news);
-  }, [getAllNews]);
+  }, [getAllNews, all_news]);
   return (
     <AdminLayout>
       <div className="table-responsive py-2 ">
@@ -38,9 +37,9 @@ export const index = () => {
           <tbody>
             {all_news &&
               all_news.map((news, index) => (
-                <tr>
+                <tr key={index}>
                   <th scope="row">{index + 1}</th>
-                  <td>{news.title}</td>
+                  <td className="text-primary">{news.title}</td>
                   <td>{news.body}</td>
                   <td>{news.category.title}</td>
                   <td>
@@ -53,7 +52,7 @@ export const index = () => {
                       }}
                     >
                       {news.tag.map((tg) => (
-                        <li>{tg.title}</li>
+                        <li key={tg._id}>{tg.title}</li>
                       ))}
                     </ul>
                   </td>
@@ -67,7 +66,7 @@ export const index = () => {
                       }}
                     >
                       {news.topic.map((tg) => (
-                        <li>{tg.title}</li>
+                        <li key={tg._id}>{tg.title}</li>
                       ))}
                     </ul>
                   </td>
@@ -76,14 +75,14 @@ export const index = () => {
                   <td>
                     <button
                       type="button"
-                      className="btn btn-danger btn-sm mr-1"
+                      className="btn btn-outline-danger btn-sm  m-1"
                       onClick={() =>
                         confirm(
                           "Are you sure to delete this, this option is not inversible"
-                        ) && dispatch(deleteNews(news._id, all_news))
+                        ) && dispatch(deleteNews(news._id))
                       }
                     >
-                      <i className="fa fa-times" />
+                      <i className="fa fa-times px-1" />
                     </button>
 
                     <Link
@@ -92,10 +91,10 @@ export const index = () => {
                     >
                       <button
                         type="button"
-                        className="btn btn-secondary btn-sm mr-1 px-2"
+                        className="btn btn-outline-secondary btn-sm m-1"
                       >
                         <a>
-                          <i className="fa fa-info" />
+                          <i className="fa fa-info px-1" />
                         </a>
                       </button>
                     </Link>

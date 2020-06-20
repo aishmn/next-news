@@ -23,7 +23,8 @@ export default function (state = initalState, action) {
       };
     case SIGNOUT:
       return { ...state, is_authenticated: false, loading: false, user: null };
+
     default:
-      return { ...state, loading: false };
+      return state;
   }
 }

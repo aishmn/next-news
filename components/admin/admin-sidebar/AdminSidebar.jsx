@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 
 const AdminSidebar = () => {
   const user = useSelector((state) => state.auth.user);
+  const loading = useSelector((state) => state.auth.loading);
+
   return (
     <div
       className="bg-primary border-right border-dark container-fluid shadow text-light"
@@ -23,7 +25,7 @@ const AdminSidebar = () => {
       </div>
 
       <ul className="nav flex-column pl-2">
-        {user && user.role === "admin" && (
+        {user && !loading && user.role === "admin" && (
           <li className="nav-item">
             <h6 className="text-muted text-left p-1 ">User settings</h6>
             <Link href="/admin/users">

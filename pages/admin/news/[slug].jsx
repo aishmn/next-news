@@ -26,10 +26,19 @@ const create = () => {
     province: "",
     category: "",
     slug: "",
+    status: "",
   });
   const [selectedTag, setSelectedTag] = useState([]);
   const [selectedTopic, setSelectedTopic] = useState([]);
-  const { title, body, coverImage, province, category, slug } = formData;
+  const {
+    title,
+    body,
+    coverImage,
+    province,
+    category,
+    slug,
+    status,
+  } = formData;
 
   useEffect(() => {
     if (user) setFormData({ ...formData, author: user._id });
@@ -56,6 +65,7 @@ const create = () => {
         body: news.body,
         province: news.province,
         category: news.category._id,
+        status: news.status,
       });
       setSelectedTopic([
         ...news.topic.map((el) => ({ label: el.title, value: el._id })),
@@ -182,6 +192,22 @@ const create = () => {
                 <option value={"International"}>International</option>
               </select>
             </div>
+
+            <div className="form-group my-2">
+              <label htmlFor="exampleFormControlSelect1">Status</label>
+              <select
+                className="form-control"
+                id="exampleFormControlSelect1"
+                name="status"
+                value={status}
+                onChange={onChange}
+              >
+                <option value={""}>Choose one...</option>
+                <option value={"pending"}>Pending</option>
+                <option value={"published"}>Published</option>
+              </select>
+            </div>
+
             <button type="submit" className="btn btn-primary form-control mt-3">
               Submit
             </button>

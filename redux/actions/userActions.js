@@ -67,3 +67,18 @@ export const deleteUser = (id, users) => async (dispatch) => {
     }
   }
 };
+
+export const getUserById = (id) => async (dispatch) => {
+  try {
+    const res = await api.get(`/users/${id}`);
+    dispatch({
+      type: types.GET_USER_BY_ID,
+      payload: res.data.data.data,
+    });
+  } catch (err) {
+    console.log(err.response);
+    if (err.response.data.message) {
+      dispatch(setNotification(err.response.data.message));
+    }
+  }
+};
