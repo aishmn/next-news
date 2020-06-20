@@ -53,7 +53,7 @@ const AdminLayout = ({ children }) => {
             />
             <div className="mx-md-5 mx-4">
               {/* link section */}
-              <section className="my-1 col align-items-center justify-content-end">
+              <section className="my-1 col text-center">
                 <Link href="/admin">
                   <a className="btn btn-outline-danger btn-sm rounded m-1">
                     Homepage
