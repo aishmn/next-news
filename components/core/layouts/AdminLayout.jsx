@@ -52,44 +52,49 @@ const AdminLayout = ({ children }) => {
             />
             <div className="mx-md-5 mx-4">
               {/* link section */}
-              <section className="my-1 d-flex align-items-center justify-content-end">
+              <section className="my-1 col align-items-center justify-content-end">
+                <Link href="/admin">
+                  <a className="btn btn-outline-danger btn-sm rounded m-1">
+                    Homepage
+                  </a>
+                </Link>
                 <Link href="/admin/news">
-                  <a className="btn btn-outline-danger btn-sm rounded mr-1">
+                  <a className="btn btn-outline-danger btn-sm rounded m-1">
                     News
                   </a>
                 </Link>
                 <Link href="/admin/news/create">
-                  <a className="btn btn-outline-danger btn-sm rounded mr-1">
+                  <a className="btn btn-outline-danger btn-sm rounded m-1">
                     Create News
                   </a>
                 </Link>
                 <Link href="/admin/news/topic">
-                  <a className="btn btn-outline-primary btn-sm rounded mr-1">
+                  <a className="btn btn-outline-primary btn-sm rounded m-1">
                     Topics
                   </a>
                 </Link>
                 <Link href="/admin/news/topic/create">
-                  <a className="btn btn-outline-primary btn-sm rounded mr-1">
+                  <a className="btn btn-outline-primary btn-sm rounded m-1">
                     Create Topics
                   </a>
                 </Link>
                 <Link href="/admin/news/tag">
-                  <a className="btn btn-outline-secondary btn-sm rounded mr-1">
+                  <a className="btn btn-outline-secondary btn-sm rounded m-1">
                     Tags
                   </a>
                 </Link>
                 <Link href="/admin/news/tag/create">
-                  <a className="btn btn-outline-secondary btn-sm rounded mr-1">
+                  <a className="btn btn-outline-secondary btn-sm rounded m-1">
                     Create Tags
                   </a>
                 </Link>
                 <Link href="/admin/users">
-                  <a className="btn btn-outline-danger btn-sm rounded mr-1">
+                  <a className="btn btn-outline-danger btn-sm rounded m-1">
                     Users
                   </a>
                 </Link>
                 <Link href="/admin/users/create">
-                  <a className="btn btn-outline-danger btn-sm rounded  ">
+                  <a className="btn btn-outline-danger btn-sm rounded m-1">
                     Create new User
                   </a>
                 </Link>

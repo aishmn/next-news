@@ -4,7 +4,11 @@ import { useSelector } from "react-redux";
 const AdminSidebar = () => {
   const user = useSelector((state) => state.auth.user);
   const loading = useSelector((state) => state.auth.loading);
-
+  const leadStyle = {
+    fontSize: "14px",
+    letterSpacing: "1.2px",
+    fontWeight: "bold",
+  };
   return (
     <div
       className="bg-primary border-right border-dark container-fluid shadow text-light"
@@ -14,20 +18,65 @@ const AdminSidebar = () => {
         fontSize: "14px",
       }}
     >
-      <div className="text-center">
-        <i
-          className="fa fa-bandcamp fa-2x pt-3 text-light"
-          aria-hidden="true"
-        ></i>
-        <p className="lead pb-1 pt-1 text-center font-weight-bold">
-          Admin Pannel
-        </p>
+      <div className="text-left pl-3 mt-1">
+        <section
+          className="text-center font-weight-bolder d-flex align-items-center justify-content-center"
+          style={{ fontSize: "24px" }}
+        >
+          <i
+            className="fa fa-snowflake-o fa-lg p-1 pt-3"
+            aria-hidden="true"
+          ></i>
+
+          <span className="text-alert ">
+            <u>admin</u>
+          </span>
+          <span className="text-warning">
+            <u>pannel</u>
+          </span>
+        </section>
+        <section className="py-2 mt-3 bg-gradient-primary rounded p-1">
+          <div className="">
+            <img
+              src="https://placeimg.com/48/48/people"
+              className="rounded-circle"
+              alt="avatar"
+            />
+            <span className="pl-4 ">
+              <i className="fa fa-bell fa-lg m-1" aria-hidden="true"></i>
+              <i className="fa fa-comments-o m-1" aria-hidden="true"></i>
+              <i className="fa fa-exclamation m-1" aria-hidden="true"></i>
+            </span>
+          </div>
+        </section>
+        <section className="p-1">
+          <small>
+            <b
+              style={{
+                fontSize: "18px",
+                paddingBottom: "0px",
+                letterSpacing: "1px",
+              }}
+            >
+              {user && user.name}
+            </b>
+            <br />
+            <u
+              className="text-warning"
+              style={{ fontSize: "12px", lineHeight: "1" }}
+            >
+              administrator
+            </u>
+          </small>
+        </section>
       </div>
 
-      <ul className="nav flex-column pl-2">
+      <ul className="nav flex-column pl-3 pt-2">
         {user && !loading && user.role === "admin" && (
           <li className="nav-item">
-            <h6 className="text-muted text-left p-1 ">User settings</h6>
+            <small style={leadStyle} className="text-muted text-left p-1 ">
+              User Settings
+            </small>
             <Link href="/admin/users">
               <a className="nav-link text-light" href="#">
                 <i className="fa fa-users fa-lg mr-1" aria-hidden="true"></i>
@@ -45,8 +94,10 @@ const AdminSidebar = () => {
             </Link>
           </li>
         )}
-        <h6 className="text-muted text-left p-1">News settings</h6>
-        <li className="nav-item">
+        <h6 style={leadStyle} className="text-muted text-left p-1">
+          News settings
+        </h6>
+        <li className="nav-item ">
           <Link href="/admin/news">
             <a className="nav-link text-light" href="#">
               <i
@@ -65,7 +116,9 @@ const AdminSidebar = () => {
               Create News
             </a>
           </Link>
-          <h6 className="text-muted text-left p-1">Tags settings</h6>
+          <h6 style={leadStyle} className="text-muted text-left p-1">
+            Tags settings
+          </h6>
           <Link href="/admin/news/tag">
             <a className="nav-link text-light" href="#">
               <i className="fa fa-tags mr-1" aria-hidden="true"></i>
@@ -78,7 +131,9 @@ const AdminSidebar = () => {
               Create Tag
             </a>
           </Link>
-          <h6 className="text-muted text-left p-1">Topics settings</h6>
+          <h6 style={leadStyle} className="text-muted text-left p-1">
+            Topics settings
+          </h6>
           <Link href="/admin/news/topic">
             <a className="nav-link text-light" href="#">
               <i className="fa fa-bookmark fa-lg mr-1" aria-hidden="true"></i>
@@ -91,7 +146,9 @@ const AdminSidebar = () => {
               Create Topic
             </a>
           </Link>
-          <h6 className="text-muted text-left p-1">Category settings</h6>
+          <h6 style={leadStyle} className="text-muted text-left p-1">
+            Category settings
+          </h6>
           <Link href="/admin/news/category">
             <a className="nav-link text-light" href="#">
               <i className="fa fa-list fa-lg mr-1" aria-hidden="true"></i>
@@ -105,7 +162,9 @@ const AdminSidebar = () => {
             </a>
           </Link>
         </li>
-        <h6 className="text-muted text-left p-1">Configuration</h6>
+        <h6 style={leadStyle} className="text-muted text-left p-1">
+          Configuration
+        </h6>
         <li className="nav-item">
           <Link href="/admin/users">
             <a className="nav-link text-light" href="#">

@@ -46,10 +46,10 @@ export default function index() {
         />
         <div className="col-12">
           <div className="row chart-row">
-            <div className="col-md-6 bg-warning pt-4">
+            <div className="col-md-6 bg-warning pt-4 border">
               <NewsPerWeekChart />
             </div>
-            <div className="col-md-6 bg-dark">
+            <div className="col-md-6 bg-dark border border-light">
               <PostPerCategory />
             </div>
           </div>

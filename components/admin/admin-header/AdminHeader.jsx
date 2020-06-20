@@ -1,55 +1,66 @@
 import { useSelector, useDispatch } from "react-redux";
 import { signOut } from "../../../redux/actions/authActions";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 const AdminHeader = ({ setShowDrawer, showDrawer }) => {
+  const router = useRouter();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
-
+  const handleNavigation = () => {
+    if (router.pathname === "/admin") {
+      router.replace("/admin");
+    } else {
+      router.back();
+    }
+  };
   return (
-    <nav className="navbar navbar-light ">
-      <ul className="nav text-light">
-        <span
-          className="btn"
-          onClick={(e) => setShowDrawer(!showDrawer)}
-          type="button"
-        >
-          <i
-            className="fa fa-arrow-circle-left fa-2x ml-1 text-primary"
-            aria-hidden="true"
-          ></i>
-        </span>
-        <h5 className="navbar-brand font-weight-bold self-align-center navlink">
-          ADMINISTRATION
-        </h5>
-        {/* <li className="nav-item">
-          <a className="nav-link" href="#">
-            Pricing
-          </a>
-        </li> */}
-      </ul>
-      <div className="ml-auto">
-        <ul className="nav">
-          <li className="nav-item text-primary ">
-            <i className="fa fa-user-circle-o mr-1" aria-hidden="true" />
-
-            <span className="text-primary">{user && user.name}</span>
+    <div className="">
+      <nav className="navbar navbar-light d-flex-column  shadow ">
+        <ul className="nav ">
+          <li className="nav-item">
+            <i
+              className="fa fa-arrow-circle-o-left fa-lg ml-1 text-primary"
+              aria-hidden="true"
+              onClick={handleNavigation}
+            ></i>
           </li>
-          <li className="nav-item text-secondary badge ">
-            <small>{user && user.role}</small>
+          <li className="nav-item">
+            <i
+              className="fa fa-bars fa-lg  ml-1 text-primary"
+              aria-hidden="true"
+              onClick={(e) => setShowDrawer(!showDrawer)}
+            ></i>
           </li>
 
-          <li className="nav-item  ml-md-2">
-            <button
-              type="button"
-              className="btn btn-link btn-sm active text-dark"
-              onClick={(e) => dispatch(signOut())}
-            >
-              <i className="fa fa-sign-in"></i> Logout
-            </button>
-          </li>
+          <div
+            className="d-flex justify-content-end "
+            style={{
+              position: "absolute",
+              right: "25px",
+            }}
+          >
+            <li className="nav-item ">
+              <i className="fa fa-user-circle-o mr-1" aria-hidden="true" />
+
+              <span className="text-primary">{user && user.name}</span>
+            </li>
+            <li className="nav-item text-secondary badge ">
+              <small>{user && user.role}</small>
+            </li>
+            <li className="nav-item">
+              <button
+                type="button"
+                className="btn btn-link btn-sm active text-dark"
+                onClick={(e) => dispatch(signOut())}
+              >
+                <i className="fa fa-sign-in"></i> Logout
+              </button>
+            </li>
+          </div>
         </ul>
-      </div>
-    </nav>
+      </nav>
+    </div>
   );
 };
 

@@ -1,7 +1,7 @@
 const InfoCard = ({ title, value, icon, color }) => {
   return (
     <div
-      className={`col-md-3 col-lg-3 col-sm-6 text-center card p-3 my-2 py-5  btn btn-${color} rounded shadow border `}
+      className={`col-md-6 col-lg-3 col-sm-6 text-center card p-3 my-2 py-5  btn btn-${color} rounded shadow border `}
     >
       <div className="content">
         <i className={`${icon}`} aria-hidden="true"></i>
