@@ -1,4 +1,10 @@
-import { LOAD_USER, SIGNUP, SIGNIN, SIGNOUT } from "../store/types";
+import {
+  LOAD_USER,
+  SIGNUP,
+  SIGNIN,
+  SIGNOUT,
+  LOAD_USER_FAILED,
+} from "../store/types";
 import api from "../../lib/api";
 import setAuthToken from "../../lib/setAuthToken";
 import { setNotification } from "./notificationActions";
@@ -12,7 +18,10 @@ export const loadUser = () => async (dispatch) => {
       payload: res.data.data.data,
     });
   } catch (err) {
+    console.log(err.response);
+
     if (err.response.data.message) {
+      dispatch({ type: LOAD_USER_FAILED });
       dispatch(setNotification(err.response.data.message));
     }
   }

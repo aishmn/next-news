@@ -1,4 +1,10 @@
-import { LOAD_USER, SIGNIN, SIGNOUT, SIGNUP } from "../store/types";
+import {
+  LOAD_USER,
+  SIGNIN,
+  SIGNOUT,
+  SIGNUP,
+  LOAD_USER_FAILED,
+} from "../store/types";
 
 const initalState = {
   /* global localStorage */
@@ -22,6 +28,7 @@ export default function (state = initalState, action) {
         user: payload,
       };
     case SIGNOUT:
+    case LOAD_USER_FAILED:
       return { ...state, is_authenticated: false, loading: false, user: null };
 
     default:

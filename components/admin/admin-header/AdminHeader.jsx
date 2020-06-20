@@ -16,49 +16,36 @@ const AdminHeader = ({ setShowDrawer, showDrawer }) => {
   };
   return (
     <div className="">
-      <nav className="navbar navbar-light d-flex-column  shadow ">
-        <ul className="nav ">
-          <li className="nav-item">
-            <i
-              className="fa fa-arrow-circle-o-left fa-lg ml-1 text-primary"
-              aria-hidden="true"
-              onClick={handleNavigation}
-            ></i>
-          </li>
-          <li className="nav-item">
-            <i
-              className="fa fa-bars fa-lg  ml-1 text-primary"
-              aria-hidden="true"
-              onClick={(e) => setShowDrawer(!showDrawer)}
-            ></i>
-          </li>
+      <nav className="navbar  navbar-light shadow">
+        <i
+          className="fa fa-arrow-circle-o-left fa-2x  text-primary"
+          aria-hidden="true"
+          onClick={handleNavigation}
+        ></i>
+        <i
+          className="fa fa-bars fa-2x  ml-1 mr-auto text-primary "
+          aria-hidden="true"
+          onClick={(e) => setShowDrawer(!showDrawer)}
+        ></i>
 
-          <div
-            className="d-flex justify-content-end "
-            style={{
-              position: "absolute",
-              right: "25px",
-            }}
-          >
-            <li className="nav-item ">
-              <i className="fa fa-user-circle-o mr-1" aria-hidden="true" />
-
-              <span className="text-primary">{user && user.name}</span>
-            </li>
-            <li className="nav-item text-secondary badge ">
-              <small>{user && user.role}</small>
-            </li>
-            <li className="nav-item">
-              <button
-                type="button"
-                className="btn btn-link btn-sm active text-dark"
-                onClick={(e) => dispatch(signOut())}
-              >
-                <i className="fa fa-sign-in"></i> Logout
-              </button>
-            </li>
-          </div>
-        </ul>
+        <div id="navbarText">
+          <span className="navbar-text">
+            <i className="fa fa-user-circle-o mr-1" aria-hidden="true" />
+            <span className="text-primary">{user && user.name}</span>
+            <span className="badge text-warning rounded">
+              <sup>
+                <u>{user && user.role}</u>
+              </sup>
+            </span>
+            <button
+              type="button"
+              className="btn btn-link btn-sm active text-dark"
+              onClick={(e) => dispatch(signOut())}
+            >
+              <i className="fa fa-sign-in"></i> Logout
+            </button>
+          </span>
+        </div>
       </nav>
     </div>
   );

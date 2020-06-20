@@ -5,6 +5,7 @@ export const SIGNUP = "SIGNUP";
 export const SIGNIN = "SIGNIN";
 export const SIGNOUT = "SIGNOUT";
 export const LOAD_USER = "LOAD_USER";
+export const LOAD_USER_FAILED = "LOAD_USER_FAILED";
 export const GET_ALL_USERS = "GET_ALL_USERS";
 export const CREATE_USER = "CREATE_USER";
 export const UPDATE_USER = "UPDATE_USER";

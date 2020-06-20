@@ -11,7 +11,7 @@ export const getAllUsers = () => async (dispatch) => {
       payload: res.data.data.data,
     });
   } catch (err) {
-    console.log(err);
+    console.log(err.response);
     if (err.response.data.message) {
       dispatch(setNotification(err.response.data.message));
     }
