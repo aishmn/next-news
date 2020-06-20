@@ -18,8 +18,11 @@ const create = () => {
   };
   return (
     <AdminLayout>
-      <div>
-        <form className="p-5" onSubmit={onSubmit}>
+      <div className="pb-5">
+        <form
+          className="p-4 border border-secondary rounded"
+          onSubmit={onSubmit}
+        >
           <div className="form-group">
             <label htmlFor="newstitle">Title</label>
             <input
@@ -34,7 +37,7 @@ const create = () => {
           </div>
 
           <button type="submit" className="btn btn-primary form-control mt-3">
-            Submit
+            Create Tag
           </button>
         </form>
       </div>

@@ -16,8 +16,15 @@ export const index = () => {
 
   return (
     <AdminLayout>
-      <div className="table-responsive py-2 py-md-5">
-        <table className="table table-bordered table-hover">
+      <div className="table-responsive ">
+        <table
+          className="table table-bordered table-hover bg-warning shadow"
+          style={{
+            listStyleType: "none",
+            fontSize: "13px",
+            textAlign: "left",
+          }}
+        >
           <thead>
             <tr>
               <th scope="col">#</th>
