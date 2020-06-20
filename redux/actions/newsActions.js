@@ -22,7 +22,8 @@ export const createNews = (body) => async (dispatch) => {
       type: types.CREATE_NEWS,
       payload: res.data.data,
     });
-    dispatch(setNotification("News Create, Create another"));
+    dispatch(setNotification("News Created, Create another"));
+    dispatch(getAllNews());
   } catch (err) {
     console.log(err.response);
     if (err.response.data.message) {

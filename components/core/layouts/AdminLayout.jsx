@@ -8,6 +8,8 @@ import Alert from "../../alert/Alert";
 import { setNotification } from "../../../redux/actions/notificationActions";
 import setAuthToken from "../../../lib/setAuthToken";
 import Router from "next/router";
+import Link from "next/link";
+
 const AdminLayout = ({ children }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const clientSide = typeof window !== "undefined";
@@ -40,13 +42,60 @@ const AdminLayout = ({ children }) => {
       {!loading && user && user.role !== "user" && (
         <Row>
           <Alert />
+
           {showDrawer && <AdminSidebar />}
+
           <div className="col m-0 shadow ">
             <AdminHeader
               setShowDrawer={setShowDrawer}
               showDrawer={showDrawer}
             />
-            <div className="mx-md-5 mx-4">{children}</div>
+            <div className="mx-md-5 mx-4">
+              {/* link section */}
+              <section className="my-1 d-flex align-items-center justify-content-end">
+                <Link href="/admin/news">
+                  <a className="btn btn-outline-danger btn-sm rounded mr-1">
+                    News
+                  </a>
+                </Link>
+                <Link href="/admin/news/create">
+                  <a className="btn btn-outline-danger btn-sm rounded mr-1">
+                    Create News
+                  </a>
+                </Link>
+                <Link href="/admin/news/topic">
+                  <a className="btn btn-outline-primary btn-sm rounded mr-1">
+                    Topics
+                  </a>
+                </Link>
+                <Link href="/admin/news/topic/create">
+                  <a className="btn btn-outline-primary btn-sm rounded mr-1">
+                    Create Topics
+                  </a>
+                </Link>
+                <Link href="/admin/news/tag">
+                  <a className="btn btn-outline-secondary btn-sm rounded mr-1">
+                    Tags
+                  </a>
+                </Link>
+                <Link href="/admin/news/tag/create">
+                  <a className="btn btn-outline-secondary btn-sm rounded mr-1">
+                    Create Tags
+                  </a>
+                </Link>
+                <Link href="/admin/users">
+                  <a className="btn btn-outline-danger btn-sm rounded mr-1">
+                    Users
+                  </a>
+                </Link>
+                <Link href="/admin/users/create">
+                  <a className="btn btn-outline-danger btn-sm rounded  ">
+                    Create new User
+                  </a>
+                </Link>
+              </section>
+              {children}
+            </div>
           </div>
         </Row>
       )}

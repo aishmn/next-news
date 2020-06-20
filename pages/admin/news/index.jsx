@@ -12,7 +12,7 @@ export const index = () => {
   }, [getAllNews, all_news]);
   return (
     <AdminLayout>
-      <div className="table-responsive py-2 ">
+      <div className="table-responsive py-1 ">
         <table
           className="table table-bordered table-hover bg-warning"
           style={{
